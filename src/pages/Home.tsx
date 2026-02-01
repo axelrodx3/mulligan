@@ -60,7 +60,7 @@ function isOpenNow(): { open: boolean; status: string } {
 
 const TAGLINE_PHRASES = ['Sports.', 'Great food.', 'Good vibes.']
 
-const ON_TAP = ['Modelo', 'Miller Lite', 'Juicy Jay', 'Allagash', 'Coors Banquet', '& More']
+const ON_TAP = ['Modelo', 'Miller Lite', 'Juicy Jay', 'Allagash', 'Coors Banquet']
 
 const AMENITIES = [
   '14 Large HD Flat Screen TVs',
