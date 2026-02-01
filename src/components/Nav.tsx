@@ -14,7 +14,7 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
       <div className="w-full flex items-center justify-between px-6 md:px-8 py-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link to="/" className="flex items-center gap-2 shrink-0 transition-transform duration-200 hover:scale-105">
           <img
             src="/logo.png"
             alt="Mulligans Sports Bar & Grille"
@@ -30,7 +30,7 @@ export default function Nav() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-all duration-200 hover:underline underline-offset-4"
               >
                 {link.label}
               </a>
@@ -38,7 +38,7 @@ export default function Nav() {
               <Link
                 key={link.to!}
                 to={link.to!}
-                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-all duration-200 hover:underline underline-offset-4"
               >
                 {link.label}
               </Link>
@@ -49,7 +49,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-mulligan-gray-dark"
+          className="md:hidden p-2 text-mulligan-gray-dark rounded-lg transition-colors duration-200 hover:bg-gray-100 active:scale-95"
           aria-label="Toggle menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-all duration-200 hover:underline underline-offset-4"
               >
                 {link.label}
               </a>
@@ -81,7 +81,7 @@ export default function Nav() {
                 key={link.to!}
                 to={link.to!}
                 onClick={() => setMobileOpen(false)}
-                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-all duration-200 hover:underline underline-offset-4"
               >
                 {link.label}
               </Link>

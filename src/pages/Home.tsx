@@ -83,13 +83,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               to="/menu"
-              className="px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               View Menu
             </Link>
             <Link
               to="/location"
-              className="px-6 py-3 border-2 border-mulligan-blue text-mulligan-blue hover:bg-mulligan-blue hover:text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 border-2 border-mulligan-blue text-mulligan-blue hover:bg-mulligan-blue hover:text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               Location & Hours
             </Link>
@@ -97,7 +97,7 @@ export default function Home() {
               href="https://www.doordash.com/store/30915869?src=yp&delivery=true"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-[#FF3008] hover:bg-[#e62e06] text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 bg-[#FF3008] hover:bg-[#e62e06] text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               Order on DoorDash
             </a>
@@ -175,7 +175,7 @@ export default function Home() {
             {WEEKLY_SPECIALS.map(({ day, special }) => (
               <div
                 key={day}
-                className="bg-mulligan-blue/5 rounded-lg p-4 border border-mulligan-blue/20 text-center"
+                className="bg-mulligan-blue/5 rounded-lg p-4 border border-mulligan-blue/20 text-center transition-all duration-200 hover:bg-mulligan-blue/10 hover:shadow-md hover:scale-[1.02]"
               >
                 <p className="font-semibold text-mulligan-blue text-sm">{day}</p>
                 <p className="text-mulligan-gray-dark text-sm mt-1">{special}</p>
@@ -220,7 +220,7 @@ export default function Home() {
             {AMENITIES.map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-lg border border-gray-200"
+                className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 transition-all duration-200 hover:shadow-md hover:border-mulligan-blue/30"
               >
                 <span className="text-mulligan-blue text-xl">✓</span>
                 <span className="text-mulligan-gray-dark">{item}</span>
@@ -257,7 +257,7 @@ export default function Home() {
             <p className="text-mulligan-gray-dark mb-6">Fort Mill, SC 29715</p>
             <Link
               to="/location"
-              className="inline-block px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-colors"
+              className="inline-block px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               Get Directions
             </Link>

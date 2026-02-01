@@ -27,7 +27,7 @@ export default function Location() {
               href="https://www.google.com/maps/dir//410+Highway+21+Bypass,+Fort+Mill,+SC+29715"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-colors"
+              className="inline-block px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
             >
               Get Directions
             </a>

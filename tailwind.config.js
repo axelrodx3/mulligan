@@ -19,6 +19,9 @@ export default {
       animation: {
         'open-pulse': 'open-pulse 2s ease-in-out infinite',
       },
+      transitionDuration: {
+        '250': '250ms',
+      },
       colors: {
         mulligan: {
           blue: '#1d4ed8',

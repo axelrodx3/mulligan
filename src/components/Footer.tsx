@@ -49,7 +49,7 @@ export default function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-lg text-mulligan-gray-dark hover:border-mulligan-blue hover:text-mulligan-blue hover:shadow-md transition-all font-medium text-sm"
+              className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-lg text-mulligan-gray-dark hover:border-mulligan-blue hover:text-mulligan-blue hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 font-medium text-sm"
               aria-label={label}
             >
               {icon}
@@ -63,10 +63,10 @@ export default function Footer() {
           <img src="/logo.png" alt="Mulligans" className="h-10 w-auto" />
           <div className="flex flex-wrap items-center justify-center gap-4 text-mulligan-gray text-sm">
             <span>410 Highway 21 Bypass, Fort Mill, SC 29715</span>
-            <a href="mailto:MulligansFM@Gmail.com" className="hover:text-mulligan-blue transition-colors">
+            <a href="mailto:MulligansFM@Gmail.com" className="hover:text-mulligan-blue transition-colors duration-200 hover:underline underline-offset-2">
               MulligansFM@Gmail.com
             </a>
-            <a href="tel:803-548-0044" className="hover:text-mulligan-blue transition-colors">
+            <a href="tel:803-548-0044" className="hover:text-mulligan-blue transition-colors duration-200 hover:underline underline-offset-2">
               (803) 548-0044
             </a>
           </div>
