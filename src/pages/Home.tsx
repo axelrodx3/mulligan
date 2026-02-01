@@ -134,8 +134,11 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-24 pb-10 px-6 bg-gradient-to-b from-gray-50/80 via-white to-white">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative pt-24 pb-10 px-6 bg-gradient-to-b from-gray-50/80 via-white to-white overflow-hidden">
+        <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-mulligan-blue/8 pointer-events-none" aria-hidden="true" />
+        <div className="absolute top-1/2 -right-32 w-80 h-80 rounded-full bg-mulligan-blue/5 pointer-events-none" aria-hidden="true" />
+        <div className="absolute -bottom-20 left-1/3 w-48 h-48 rounded-full bg-mulligan-gray/10 pointer-events-none" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <img
             src="/logo.png"
             alt="Mulligans Sports Bar & Grille"
@@ -281,8 +284,10 @@ export default function Home() {
       </section>
 
       {/* Specials */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-16 px-6 bg-white overflow-hidden">
+        <div className="absolute top-1/4 -left-24 w-56 h-56 rounded-full bg-mulligan-blue/6 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-10 -right-20 w-64 h-64 rounded-full bg-mulligan-gray/5 pointer-events-none" aria-hidden="true" />
+        <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             Specials
           </h2>
@@ -397,8 +402,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials - Yelp Reviews */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-16 px-6 bg-white overflow-hidden">
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-96 h-32 rounded-full bg-mulligan-blue/5 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 -left-32 w-64 h-64 rounded-full bg-mulligan-gray/5 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 -right-32 w-56 h-56 rounded-full bg-mulligan-blue/4 pointer-events-none" aria-hidden="true" />
+        <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             What Our Customers Say
           </h2>
@@ -462,8 +470,10 @@ export default function Home() {
       </section>
 
       {/* What We Offer */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative py-16 px-6 bg-white overflow-hidden">
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-24 rounded-full bg-mulligan-blue/5 pointer-events-none" aria-hidden="true" />
+        <div className="absolute -bottom-12 right-10 w-48 h-48 rounded-full bg-mulligan-gray/5 pointer-events-none" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             What We Offer
           </h2>
@@ -482,8 +492,9 @@ export default function Home() {
       </section>
 
       {/* Hours & Location */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+      <section className="relative py-16 px-6 bg-white overflow-hidden">
+        <div className="absolute top-1/3 -left-20 w-56 h-56 rounded-full bg-mulligan-blue/4 pointer-events-none" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 relative z-10">
           <div>
             <h2 className="font-display text-3xl text-mulligan-blue mb-6 tracking-wide">
               Hours
