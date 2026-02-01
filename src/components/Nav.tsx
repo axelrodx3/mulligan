@@ -12,12 +12,12 @@ export default function Nav() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
-      <div className="w-full flex items-center justify-between px-6 md:px-8 py-3">
-        <Link to="/" className="flex items-center gap-2">
+      <div className="w-full flex items-center justify-between px-6 md:px-8 py-4">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src="/logo.png"
             alt="Mulligans Sports Bar & Grille"
-            className="h-14 md:h-20 w-auto"
+            className="h-20 md:h-28 w-auto min-h-[48px]"
           />
         </Link>
 
