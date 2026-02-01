@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import StickyOrderBar from './components/StickyOrderBar'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import Location from './pages/Location'
@@ -10,7 +9,7 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white text-gray-800 pb-14">
+      <div className="min-h-screen bg-white text-gray-800">
         <Nav />
         <main>
           <Routes>
