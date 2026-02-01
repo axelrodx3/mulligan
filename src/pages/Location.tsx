@@ -9,16 +9,16 @@ const MAP_EMBED_URL =
 
 export default function Location() {
   return (
-    <div className="pt-24 pb-20 px-6 bg-tavern-black text-tavern-white">
+    <div className="pt-24 pb-20 px-6 bg-white text-gray-800">
       <div className="max-w-5xl mx-auto">
-        <h1 className="font-display text-4xl md:text-5xl text-mulligan-gold mb-12 tracking-wide">
+        <h1 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-12 tracking-wide">
           Location & Hours
         </h1>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="font-display text-2xl text-tavern-white mb-4">Address</h2>
-            <p className="text-tavern-offwhite mb-6">
+            <h2 className="font-display text-2xl text-gray-800 mb-4">Address</h2>
+            <p className="text-mulligan-gray-dark mb-6">
               410 Highway 21 Bypass
               <br />
               Fort Mill, SC 29715
@@ -27,28 +27,28 @@ export default function Location() {
               href="https://www.google.com/maps/dir//410+Highway+21+Bypass,+Fort+Mill,+SC+29715"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-mulligan-green hover:bg-mulligan-green/90 text-white font-semibold rounded-lg transition-colors"
+              className="inline-block px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-colors"
             >
               Get Directions
             </a>
           </div>
           <div>
-            <h2 className="font-display text-2xl text-tavern-white mb-4">Hours</h2>
+            <h2 className="font-display text-2xl text-gray-800 mb-4">Hours</h2>
             <div className="space-y-3">
               {HOURS.map(({ days, time }) => (
                 <div
                   key={days}
-                  className="flex justify-between items-center py-2 border-b border-tavern-gray/50"
+                  className="flex justify-between items-center py-2 border-b border-gray-200"
                 >
-                  <span className="text-tavern-offwhite">{days}</span>
-                  <span className="text-tavern-silver">{time}</span>
+                  <span className="text-mulligan-gray-dark">{days}</span>
+                  <span className="text-mulligan-gray">{time}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="rounded-xl overflow-hidden border border-tavern-gray shadow-xl aspect-video">
+        <div className="rounded-xl overflow-hidden border border-gray-200 shadow-xl aspect-video">
           <iframe
             src={MAP_EMBED_URL}
             width="100%"

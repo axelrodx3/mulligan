@@ -1,11 +1,11 @@
 export default function Menu() {
   return (
-    <div className="pt-24 pb-20 px-6 bg-tavern-black text-tavern-white">
+    <div className="pt-24 pb-20 px-6 bg-white text-gray-800">
       <div className="max-w-4xl mx-auto">
-        <h1 className="font-display text-4xl md:text-5xl text-mulligan-gold mb-4 tracking-wide">
+        <h1 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-4 tracking-wide">
           The Menu
         </h1>
-        <p className="text-tavern-silver mb-12">
+        <p className="text-mulligan-gray mb-12">
           Nothing goes into our food except for the finest ingredients!
         </p>
 
@@ -107,19 +107,19 @@ function MenuSection({
 }) {
   return (
     <section className="mb-16">
-      <h2 className="font-display text-2xl md:text-3xl text-mulligan-gold mb-2 tracking-wide">
+      <h2 className="font-display text-2xl md:text-3xl text-mulligan-blue mb-2 tracking-wide">
         {title}
       </h2>
-      {subtitle && <p className="text-tavern-silver text-sm mb-6">{subtitle}</p>}
+      {subtitle && <p className="text-mulligan-gray text-sm mb-6">{subtitle}</p>}
       <div className="space-y-6">
         {items.map((item) => (
-          <div key={item.name} className="border-b border-tavern-gray/50 pb-6 last:border-0">
+          <div key={item.name} className="border-b border-gray-200 pb-6 last:border-0">
             <div className="flex justify-between items-start gap-4">
               <div>
-                <h3 className="text-tavern-white font-semibold text-lg">{item.name}</h3>
-                {item.desc && <p className="text-tavern-silver text-sm mt-1">{item.desc}</p>}
+                <h3 className="text-gray-800 font-semibold text-lg">{item.name}</h3>
+                {item.desc && <p className="text-mulligan-gray text-sm mt-1">{item.desc}</p>}
               </div>
-              <span className="text-mulligan-gold font-semibold whitespace-nowrap">{item.price}</span>
+              <span className="text-mulligan-blue font-semibold whitespace-nowrap">{item.price}</span>
             </div>
           </div>
         ))}

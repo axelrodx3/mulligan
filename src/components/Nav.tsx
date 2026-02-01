@@ -11,13 +11,14 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-tavern-black/95 backdrop-blur border-b border-tavern-gray">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
       <div className="w-full flex items-center justify-between px-6 md:px-8 py-3">
-        <Link
-          to="/"
-          className="text-xl md:text-2xl font-display tracking-wide text-tavern-white hover:text-mulligan-gold transition-colors"
-        >
-          Mulligans
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/logo.png"
+            alt="Mulligans Sports Bar & Grille"
+            className="h-10 md:h-12 w-auto"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -25,7 +26,7 @@ export default function Nav() {
             <Link
               key={to}
               to={to}
-              className="text-tavern-white/90 hover:text-tavern-white transition-colors font-medium"
+              className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
             >
               {label}
             </Link>
@@ -35,7 +36,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-tavern-white"
+          className="md:hidden p-2 text-mulligan-gray-dark"
           aria-label="Toggle menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,13 +50,13 @@ export default function Nav() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-tavern-gray py-4 px-6 flex flex-col gap-4">
+        <div className="md:hidden border-t border-gray-200 py-4 px-6 flex flex-col gap-4 bg-white">
           {navLinks.map(({ to, label }) => (
             <Link
               key={to}
               to={to}
               onClick={() => setMobileOpen(false)}
-              className="text-tavern-white/90 hover:text-tavern-white transition-colors font-medium"
+              className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
             >
               {label}
             </Link>

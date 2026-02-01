@@ -20,18 +20,13 @@ export default {
         'open-pulse': 'open-pulse 2s ease-in-out infinite',
       },
       colors: {
-        tavern: {
-          black: '#0a0a0a',
-          dark: '#111111',
-          charcoal: '#1a1a1a',
-          gray: '#2d2d2d',
-          silver: '#a0a0a0',
-          white: '#f5f5f5',
-          offwhite: '#e5e5e5',
-        },
         mulligan: {
-          green: '#166534',
-          gold: '#ca8a04',
+          blue: '#1d4ed8',
+          'blue-light': '#2563eb',
+          'blue-dark': '#1e40af',
+          gray: '#64748b',
+          'gray-light': '#94a3b8',
+          'gray-dark': '#334155',
         }
       }
     },
