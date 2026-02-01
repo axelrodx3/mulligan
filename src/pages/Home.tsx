@@ -1,4 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+const VENUE_PHOTOS = [
+  { src: '/drinks1.png', alt: 'Bar with drinks and specials' },
+  { src: '/drinks2.png', alt: 'Liquor display at Mulligans' },
+  { src: '/location1.png', alt: 'Mulligans sports bar interior' },
+]
 
 const HOURS = [
   { days: 'Monday – Thursday', time: '3:00 PM – 1:00 AM' },
@@ -59,6 +66,22 @@ const AMENITIES = [
 
 export default function Home() {
   const { open, status } = isOpenNow()
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null)
+      if (e.key === 'ArrowLeft') setLightboxIndex((i) => (i === null ? null : (i - 1 + VENUE_PHOTOS.length) % VENUE_PHOTOS.length))
+      if (e.key === 'ArrowRight') setLightboxIndex((i) => (i === null ? null : (i + 1) % VENUE_PHOTOS.length))
+    }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [lightboxIndex])
 
   return (
     <div>
@@ -124,22 +147,76 @@ export default function Home() {
             At Mulligans
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <img
-              src="/drinks1.png"
-              alt="Bar with drinks and specials"
-              className="w-full h-56 object-cover rounded-xl shadow-lg"
-            />
-            <img
-              src="/drinks2.png"
-              alt="Liquor display at Mulligans"
-              className="w-full h-56 object-cover rounded-xl shadow-lg"
-            />
-            <img
-              src="/location1.png"
-              alt="Mulligans sports bar interior"
-              className="w-full h-56 object-cover rounded-xl shadow-lg"
-            />
+            {VENUE_PHOTOS.map((photo, i) => (
+              <button
+                key={photo.src}
+                type="button"
+                onClick={() => setLightboxIndex(i)}
+                className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-56 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
+                />
+              </button>
+            ))}
           </div>
+
+          {lightboxIndex !== null && (
+            <div
+              className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
+              onClick={() => setLightboxIndex(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Photo gallery"
+            >
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setLightboxIndex(null)
+                }}
+                className="absolute top-4 right-4 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-2xl"
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setLightboxIndex((i) => (i === null ? 0 : (i - 1 + VENUE_PHOTOS.length) % VENUE_PHOTOS.length))
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
+                aria-label="Previous"
+              >
+                ‹
+              </button>
+              <img
+                src={VENUE_PHOTOS[lightboxIndex].src}
+                alt={VENUE_PHOTOS[lightboxIndex].alt}
+                className="max-w-[90vw] max-h-[85vh] object-contain z-0"
+                onClick={(e) => e.stopPropagation()}
+              />
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setLightboxIndex((i) => (i === null ? 0 : (i + 1) % VENUE_PHOTOS.length))
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
+                aria-label="Next"
+              >
+                ›
+              </button>
+              <span className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[100] text-white/80 text-sm">
+                {lightboxIndex + 1} / {VENUE_PHOTOS.length}
+              </span>
+            </div>
+          )}
         </div>
       </section>
 
