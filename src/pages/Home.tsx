@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const GALLERY_PHOTOS = [
   { src: '/drinks1.png', alt: 'Bar with drinks and specials' },
@@ -81,6 +81,8 @@ export default function Home() {
   const { open, status } = isOpenNow()
   const todayIndex = getTodaySpecialIndex()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const touchStartX = useRef<number>(0)
+  const touchEndX = useRef<number>(0)
   const [taglinePhraseIndex, setTaglinePhraseIndex] = useState(0)
   const [taglineText, setTaglineText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -214,6 +216,17 @@ export default function Home() {
             <div
               className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
               onClick={() => setLightboxIndex(null)}
+              onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX }}
+              onTouchEnd={(e) => {
+                touchEndX.current = e.changedTouches[0].clientX
+                const diff = touchStartX.current - touchEndX.current
+                const threshold = 50
+                if (diff > threshold) {
+                  setLightboxIndex((i) => (i === null ? 0 : (i + 1) % GALLERY_PHOTOS.length))
+                } else if (diff < -threshold) {
+                  setLightboxIndex((i) => (i === null ? 0 : (i - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length))
+                }
+              }}
               role="dialog"
               aria-modal="true"
               aria-label="Photo gallery"
@@ -224,7 +237,7 @@ export default function Home() {
                   e.stopPropagation()
                   setLightboxIndex(null)
                 }}
-                className="absolute top-4 right-4 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-2xl"
+                className="absolute top-4 right-4 z-[100] min-w-[44px] min-h-[44px] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 active:bg-white/20 rounded-full transition-colors text-2xl"
                 aria-label="Close"
               >
                 ×
@@ -236,7 +249,7 @@ export default function Home() {
                   e.stopPropagation()
                   setLightboxIndex((i) => (i === null ? 0 : (i - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length))
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-[100] min-w-[48px] min-h-[48px] flex items-center justify-center text-white hover:bg-white/10 active:bg-white/20 rounded-full transition-colors text-4xl touch-manipulation"
                 aria-label="Previous"
               >
                 ‹
@@ -244,8 +257,8 @@ export default function Home() {
               <img
                 src={GALLERY_PHOTOS[lightboxIndex].src}
                 alt={GALLERY_PHOTOS[lightboxIndex].alt}
-                className="max-w-[90vw] max-h-[85vh] object-contain z-0"
-                onClick={(e) => e.stopPropagation()}
+                className="max-w-[90vw] max-h-[85vh] object-contain z-0 select-none pointer-events-none"
+                draggable={false}
               />
               <button
                 type="button"
@@ -254,7 +267,7 @@ export default function Home() {
                   e.stopPropagation()
                   setLightboxIndex((i) => (i === null ? 0 : (i + 1) % GALLERY_PHOTOS.length))
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-[100] min-w-[48px] min-h-[48px] flex items-center justify-center text-white hover:bg-white/10 active:bg-white/20 rounded-full transition-colors text-4xl touch-manipulation"
                 aria-label="Next"
               >
                 ›
