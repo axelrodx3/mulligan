@@ -64,7 +64,7 @@ export default function Home() {
             className="mx-auto max-w-md w-full mb-6"
           />
           <p className="text-mulligan-gray text-lg md:text-xl mb-6">
-            Fort Mill's destination for sports, great food, and friendly atmosphere.
+            Fort Mill's destination for sports, great food, and good vibes.
           </p>
           <span
             className={`inline-block px-4 py-2 rounded-full text-sm font-semibold text-white mb-8 ${
