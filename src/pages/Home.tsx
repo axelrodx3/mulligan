@@ -86,6 +86,14 @@ export default function Home() {
             >
               Location & Hours
             </Link>
+            <a
+              href="https://www.doordash.com/store/30915869?src=yp&delivery=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-[#FF3008] hover:bg-[#e62e06] text-white font-semibold rounded-lg transition-colors"
+            >
+              Order on DoorDash
+            </a>
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ const navLinks = [
   { to: '/menu', label: 'Menu' },
   { to: '/location', label: 'Location & Hours' },
   { to: '/contact', label: 'Contact' },
+  { href: 'https://www.doordash.com/store/30915869?src=yp&delivery=true', label: 'Order', external: true },
 ]
 
 export default function Nav() {
@@ -22,15 +23,27 @@ export default function Nav() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.to!}
+                to={link.to!}
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
 
         <button
@@ -51,16 +64,29 @@ export default function Nav() {
 
       {mobileOpen && (
         <div className="md:hidden border-t border-gray-200 py-4 px-6 flex flex-col gap-4 bg-white">
-          {navLinks.map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              onClick={() => setMobileOpen(false)}
-              className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.to!}
+                to={link.to!}
+                onClick={() => setMobileOpen(false)}
+                className="text-mulligan-gray-dark hover:text-mulligan-blue font-medium transition-colors"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>
