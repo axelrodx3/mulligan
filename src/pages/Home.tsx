@@ -16,27 +16,34 @@ const WEEKLY_SPECIALS = [
   { day: 'Sunday', special: 'Happy Hour All Day' },
 ]
 
+/**
+ * Hours: Mon-Thu 3PM-1AM, Fri-Sat 12PM-1AM, Sun 1PM-1AM
+ * All times in local timezone. "1AM" means 1AM the next calendar day.
+ */
 function isOpenNow(): { open: boolean; status: string } {
   const now = new Date()
-  const day = now.getDay()
-  const hour = now.getHours()
-  const minute = now.getMinutes()
-  const currentMinutes = hour * 60 + minute
-  const closeMinutes = 1 * 60 + 0
+  const day = now.getDay() // 0=Sun, 1=Mon, ..., 6=Sat
+  const currentMinutes = now.getHours() * 60 + now.getMinutes()
+
+  const CLOSE_AT = 1 * 60 + 0 // 1:00 AM
+
+  let open: boolean
 
   if (day === 0) {
-    const openMinutes = 13 * 60 + 0
-    const open = currentMinutes >= openMinutes || currentMinutes < closeMinutes
-    return { open, status: open ? 'Open' : 'Closed' }
+    // Sunday: 1PM-1AM. Before 1AM = still Saturday's hours. After 1PM = Sunday's hours.
+    const OPEN_AT = 13 * 60 + 0 // 1:00 PM
+    open = currentMinutes < CLOSE_AT || currentMinutes >= OPEN_AT
+  } else if (day === 5 || day === 6) {
+    // Fri-Sat: 12PM-1AM
+    const OPEN_AT = 12 * 60 + 0 // 12:00 PM
+    open = currentMinutes < CLOSE_AT || currentMinutes >= OPEN_AT
+  } else {
+    // Mon-Thu: 3PM-1AM
+    const OPEN_AT = 15 * 60 + 0 // 3:00 PM
+    open = currentMinutes < CLOSE_AT || currentMinutes >= OPEN_AT
   }
-  if (day === 5 || day === 6) {
-    const openMinutes = 12 * 60 + 0
-    const open = currentMinutes >= openMinutes || currentMinutes < closeMinutes
-    return { open, status: open ? 'Open' : 'Closed' }
-  }
-  const openMinutes = 15 * 60 + 0
-  const open = currentMinutes >= openMinutes || currentMinutes < closeMinutes
-  return { open, status: open ? 'Open' : 'Closed' }
+
+  return { open, status: open ? 'Open Now' : 'Closed' }
 }
 
 const AMENITIES = [
@@ -71,7 +78,7 @@ export default function Home() {
               open ? 'bg-green-600 animate-open-pulse' : 'bg-red-600'
             }`}
           >
-            {status} Now
+            {status}
           </span>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
