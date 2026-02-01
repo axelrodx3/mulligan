@@ -15,9 +15,14 @@ export default {
           '0%, 100%': { opacity: '1', boxShadow: '0 0 0 0 rgba(22, 163, 74, 0.4)' },
           '50%': { opacity: '1', boxShadow: '0 0 0 6px rgba(22, 163, 74, 0)' },
         },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'open-pulse': 'open-pulse 2s ease-in-out infinite',
+        'hero-enter': 'fade-in-up 0.7s ease-out both',
       },
       transitionDuration: {
         '250': '250ms',

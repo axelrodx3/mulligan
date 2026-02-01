@@ -68,19 +68,31 @@ export default function Home() {
           <img
             src="/logo.png"
             alt="Mulligans Sports Bar & Grille"
-            className="mx-auto max-w-md w-full mb-6"
+            className="mx-auto max-w-md w-full mb-6 animate-hero-enter"
+            style={{ animationDelay: '0.1s' }}
           />
-          <p className="text-mulligan-gray-dark text-xl md:text-2xl font-semibold mb-6 tracking-tight">
+          <p
+            className="text-mulligan-gray-dark text-xl md:text-2xl font-semibold mb-6 tracking-tight animate-hero-enter"
+            style={{ animationDelay: '0.25s' }}
+          >
             Fort Mill's destination for sports, great food, and good vibes.
           </p>
-          <span
-            className={`inline-block px-4 py-2 rounded-full text-sm font-semibold text-white mb-8 ${
-              open ? 'bg-green-600 animate-open-pulse' : 'bg-red-600'
-            }`}
+          <div
+            className="animate-hero-enter mb-8"
+            style={{ animationDelay: '0.4s' }}
           >
-            {status}
-          </span>
-          <div className="flex flex-wrap gap-4 justify-center">
+            <span
+              className={`inline-block px-4 py-2 rounded-full text-sm font-semibold text-white ${
+                open ? 'bg-green-600 animate-open-pulse' : 'bg-red-600'
+              }`}
+            >
+              {status}
+            </span>
+          </div>
+          <div
+            className="flex flex-wrap gap-4 justify-center animate-hero-enter"
+            style={{ animationDelay: '0.55s' }}
+          >
             <Link
               to="/menu"
               className="px-6 py-3 bg-mulligan-blue hover:bg-mulligan-blue-dark text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
