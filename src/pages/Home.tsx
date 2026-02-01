@@ -58,6 +58,8 @@ function isOpenNow(): { open: boolean; status: string } {
   return { open, status: open ? 'Open Now' : 'Closed' }
 }
 
+const TAGLINE_PHRASES = ['Sports.', 'Great food.', 'Good vibes.']
+
 const AMENITIES = [
   '14 Large HD Flat Screen TVs',
   'Massive 80" TV',
@@ -72,6 +74,38 @@ const AMENITIES = [
 export default function Home() {
   const { open, status } = isOpenNow()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const [taglinePhraseIndex, setTaglinePhraseIndex] = useState(0)
+  const [taglineText, setTaglineText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [taglineReady, setTaglineReady] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setTaglineReady(true), 1200)
+    return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    if (!taglineReady) return
+    const phrase = TAGLINE_PHRASES[taglinePhraseIndex]
+    const target = `Fort Mill's destination for ${phrase}`
+
+    if (!isDeleting) {
+      if (taglineText.length < target.length) {
+        const timer = setTimeout(() => setTaglineText(target.slice(0, taglineText.length + 1)), 60)
+        return () => clearTimeout(timer)
+      }
+      const pause = setTimeout(() => setIsDeleting(true), 2500)
+      return () => clearTimeout(pause)
+    } else {
+      if (taglineText.length > 0) {
+        const timer = setTimeout(() => setTaglineText(taglineText.slice(0, -1)), 40)
+        return () => clearTimeout(timer)
+      }
+      setIsDeleting(false)
+      setTaglinePhraseIndex((i) => (i + 1) % TAGLINE_PHRASES.length)
+    }
+  }, [taglineText, taglinePhraseIndex, isDeleting, taglineReady])
+
 
   useEffect(() => {
     if (lightboxIndex === null) return
@@ -100,10 +134,11 @@ export default function Home() {
             style={{ animationDelay: '0.1s' }}
           />
           <p
-            className="text-mulligan-gray-dark text-xl md:text-2xl font-semibold mb-6 tracking-tight animate-hero-enter"
+            className="text-mulligan-gray-dark text-xl md:text-2xl font-semibold mb-6 tracking-tight animate-hero-enter min-h-[2.5rem] md:min-h-[3rem] flex flex-wrap justify-center gap-0"
             style={{ animationDelay: '0.25s' }}
           >
-            Fort Mill's destination for sports, great food, and good vibes.
+            <span>{taglineText}</span>
+            <span className="inline-block w-0.5 h-6 md:h-7 bg-mulligan-blue ml-0.5 animate-pulse" aria-hidden="true" />
           </p>
           <div
             className="animate-hero-enter mb-8"
