@@ -149,49 +149,23 @@ export default function Home() {
       <section className="py-16 px-6 bg-gray-50 animate-fade-in" style={{ animationDelay: '1.2s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-10 tracking-wide text-center">
-            At Mulligans
+            Food & Drinks
           </h2>
-
-          {/* Venue & Bar */}
-          <div className="mb-8">
-            <h3 className="font-display text-xl text-mulligan-blue mb-4 tracking-wide text-center">Venue & Bar</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {GALLERY_PHOTOS.slice(0, 4).map((photo, i) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  onClick={() => setLightboxIndex(i)}
-                  className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-44 md:h-52 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Food & Drinks */}
-          <div>
-            <h3 className="font-display text-xl text-mulligan-blue mb-4 tracking-wide text-center">Food & Drinks</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {GALLERY_PHOTOS.slice(4, 8).map((photo, i) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  onClick={() => setLightboxIndex(i + 4)}
-                  className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-44 md:h-52 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
-                  />
-                </button>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {GALLERY_PHOTOS.map((photo, i) => (
+              <button
+                key={photo.src}
+                type="button"
+                onClick={() => setLightboxIndex(i)}
+                className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-44 md:h-52 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
+                />
+              </button>
+            ))}
           </div>
 
           {lightboxIndex !== null && (
