@@ -117,8 +117,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Venue Photos */}
-      <section className="py-16 px-6 bg-gray-50">
+      {/* Venue Photos - delayed so it doesn't show during hero entrance */}
+      <section className="py-16 px-6 bg-gray-50 animate-fade-in" style={{ animationDelay: '1.2s' }}>
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-10 tracking-wide text-center">
             At Mulligans

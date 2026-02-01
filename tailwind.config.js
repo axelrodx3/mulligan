@@ -19,10 +19,15 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(24px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
       },
       animation: {
         'open-pulse': 'open-pulse 2s ease-in-out infinite',
         'hero-enter': 'fade-in-up 0.7s ease-out both',
+        'fade-in': 'fade-in 0.4s ease-out both',
       },
       transitionDuration: {
         '250': '250ms',
