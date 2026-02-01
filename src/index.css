@@ -11,3 +11,7 @@ body {
   background-color: #ffffff;
   color: #1e293b;
 }
+
+.font-display {
+  letter-spacing: 0.05em;
+}

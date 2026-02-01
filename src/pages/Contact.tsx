@@ -8,7 +8,7 @@ export default function Contact() {
 
         <div className="space-y-8">
           <div>
-            <h2 className="font-display text-xl text-gray-800 mb-2">Address</h2>
+            <h2 className="font-display text-2xl text-gray-900 mb-2 tracking-wide">Address</h2>
             <a
               href="https://www.google.com/maps/dir//410+Highway+21+Bypass,+Fort+Mill,+SC+29715"
               target="_blank"
@@ -32,7 +32,7 @@ export default function Contact() {
           </div>
 
           <div>
-            <h2 className="font-display text-xl text-gray-800 mb-2">Email</h2>
+            <h2 className="font-display text-2xl text-gray-900 mb-2 tracking-wide">Email</h2>
             <a
               href="mailto:MulligansFM@Gmail.com"
               className="text-mulligan-gray-dark hover:text-mulligan-blue transition-colors"

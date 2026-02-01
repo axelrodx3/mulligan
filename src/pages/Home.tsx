@@ -70,7 +70,7 @@ export default function Home() {
             alt="Mulligans Sports Bar & Grille"
             className="mx-auto max-w-md w-full mb-6"
           />
-          <p className="text-mulligan-gray text-lg md:text-xl mb-6">
+          <p className="text-mulligan-gray-dark text-xl md:text-2xl font-semibold mb-6 tracking-tight">
             Fort Mill's destination for sports, great food, and good vibes.
           </p>
           <span
@@ -134,7 +134,7 @@ export default function Home() {
       {/* Specials */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-10 tracking-wide text-center">
+          <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             Specials
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -146,7 +146,7 @@ export default function Home() {
                 <li>$5 Wine</li>
                 <li>$3 Domestic Bottle</li>
               </ul>
-              <h3 className="font-display text-xl text-mulligan-blue mt-6 mb-4">Daily</h3>
+              <h3 className="font-display text-2xl text-mulligan-blue mt-6 mb-4 tracking-wide">Daily</h3>
               <ul className="space-y-1 text-mulligan-gray">
                 <li>Fried Mushrooms $9.00</li>
                 <li>Philly Eggrolls $11.00</li>
@@ -213,7 +213,7 @@ export default function Home() {
       {/* What We Offer */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-10 tracking-wide text-center">
+          <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             What We Offer
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -250,7 +250,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h2 className="font-display text-3xl text-mulligan-blue mb-6 tracking-wide">
+            <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-6 tracking-wider">
               Find Us
             </h2>
             <p className="text-mulligan-gray-dark mb-2">410 Highway 21 Bypass</p>

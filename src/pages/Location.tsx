@@ -11,7 +11,7 @@ export default function Location() {
   return (
     <div className="pt-24 pb-20 px-6 bg-white text-gray-800">
       <div className="max-w-5xl mx-auto">
-        <h1 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-12 tracking-wide">
+        <h1 className="font-display text-5xl md:text-6xl text-mulligan-blue mb-12 tracking-wider">
           Location & Hours
         </h1>
 
@@ -33,7 +33,7 @@ export default function Location() {
             </a>
           </div>
           <div>
-            <h2 className="font-display text-2xl text-gray-800 mb-4">Hours</h2>
+            <h2 className="font-display text-3xl text-gray-900 mb-4 tracking-wide">Hours</h2>
             <div className="space-y-3">
               {HOURS.map(({ days, time }) => (
                 <div

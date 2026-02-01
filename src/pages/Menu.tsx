@@ -2,10 +2,10 @@ export default function Menu() {
   return (
     <div className="pt-24 pb-20 px-6 bg-white text-gray-800">
       <div className="max-w-4xl mx-auto">
-        <h1 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-4 tracking-wide">
+        <h1 className="font-display text-5xl md:text-6xl text-mulligan-blue mb-4 tracking-wider">
           The Menu
         </h1>
-        <p className="text-mulligan-gray mb-12">
+        <p className="text-mulligan-gray text-lg font-medium mb-12">
           Nothing goes into our food except for the finest ingredients!
         </p>
 
@@ -107,7 +107,7 @@ function MenuSection({
 }) {
   return (
     <section className="mb-16">
-      <h2 className="font-display text-2xl md:text-3xl text-mulligan-blue mb-2 tracking-wide">
+      <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-2 tracking-wider">
         {title}
       </h2>
       {subtitle && <p className="text-mulligan-gray text-sm mb-6">{subtitle}</p>}
@@ -116,7 +116,7 @@ function MenuSection({
           <div key={item.name} className="border-b border-gray-200 pb-6 last:border-0">
             <div className="flex justify-between items-start gap-4">
               <div>
-                <h3 className="text-gray-800 font-semibold text-lg">{item.name}</h3>
+                <h3 className="text-gray-900 font-bold text-lg">{item.name}</h3>
                 {item.desc && <p className="text-mulligan-gray text-sm mt-1">{item.desc}</p>}
               </div>
               <span className="text-mulligan-blue font-semibold whitespace-nowrap">{item.price}</span>
