@@ -71,8 +71,13 @@ const AMENITIES = [
   'DJ Fri & Sat 9:30 PM – 1:00 AM',
 ]
 
+function getTodaySpecialIndex() {
+  return (new Date().getDay() + 6) % 7 // Maps Sun=0..Sat=6 to Mon=0..Sun=6
+}
+
 export default function Home() {
   const { open, status } = isOpenNow()
+  const todayIndex = getTodaySpecialIndex()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [taglinePhraseIndex, setTaglinePhraseIndex] = useState(0)
   const [taglineText, setTaglineText] = useState('')
@@ -266,6 +271,18 @@ export default function Home() {
           <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
             Specials
           </h2>
+
+          {/* Today's Special - prominent callout */}
+          <div className="mb-10 rounded-xl bg-mulligan-blue/10 border-2 border-mulligan-blue p-6 text-center">
+            <p className="text-mulligan-blue text-sm font-semibold uppercase tracking-wider mb-1">Today&apos;s Special</p>
+            <p className="font-display text-2xl md:text-3xl text-mulligan-blue tracking-wide">
+              {WEEKLY_SPECIALS[todayIndex].day}
+            </p>
+            <p className="text-mulligan-gray-dark text-lg md:text-xl font-medium mt-1">
+              {WEEKLY_SPECIALS[todayIndex].special}
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <h3 className="font-display text-xl text-mulligan-blue mb-4">Happy Hour</h3>
@@ -288,28 +305,56 @@ export default function Home() {
                 className="w-full rounded-xl shadow-lg border border-gray-200"
               />
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 md:hidden">
-                {WEEKLY_SPECIALS.map(({ day, special }) => (
-                  <div
-                    key={day}
-                    className="flex justify-between py-2 border-b border-gray-200 text-sm"
-                  >
-                    <span className="font-medium text-mulligan-gray-dark">{day}</span>
-                    <span className="text-mulligan-gray">{special}</span>
-                  </div>
-                ))}
+                {WEEKLY_SPECIALS.map(({ day, special }, i) => {
+                  const isToday = i === todayIndex
+                  return (
+                    <div
+                      key={day}
+                      className={`flex justify-between items-center py-3 px-3 rounded-lg ${
+                        isToday ? 'bg-mulligan-blue/10 border-2 border-mulligan-blue' : 'border-b border-gray-200'
+                      }`}
+                    >
+                      <span className="font-medium text-mulligan-gray-dark flex items-center gap-2">
+                        {isToday && (
+                          <span className="px-1.5 py-0.5 bg-mulligan-blue text-white text-xs font-bold rounded">
+                            TODAY
+                          </span>
+                        )}
+                        {day}
+                      </span>
+                      <span className={isToday ? 'text-mulligan-blue-dark font-semibold' : 'text-mulligan-gray'}>
+                        {special}
+                      </span>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
           <div className="hidden md:grid mt-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
-            {WEEKLY_SPECIALS.map(({ day, special }) => (
-              <div
-                key={day}
-                className="bg-mulligan-blue/5 rounded-lg p-4 border border-mulligan-blue/20 text-center transition-all duration-200 hover:bg-mulligan-blue/10 hover:shadow-md hover:scale-[1.02]"
-              >
-                <p className="font-semibold text-mulligan-blue text-sm">{day}</p>
-                <p className="text-mulligan-gray-dark text-sm mt-1">{special}</p>
-              </div>
-            ))}
+            {WEEKLY_SPECIALS.map(({ day, special }, i) => {
+              const isToday = i === todayIndex
+              return (
+                <div
+                  key={day}
+                  className={`rounded-lg p-4 text-center transition-all duration-200 hover:shadow-md hover:scale-[1.02] ${
+                    isToday
+                      ? 'bg-mulligan-blue/15 border-2 border-mulligan-blue shadow-md ring-2 ring-mulligan-blue/20'
+                      : 'bg-mulligan-blue/5 border border-mulligan-blue/20 hover:bg-mulligan-blue/10'
+                  }`}
+                >
+                  {isToday && (
+                    <span className="inline-block px-2 py-0.5 bg-mulligan-blue text-white text-xs font-bold rounded mb-2">
+                      TODAY
+                    </span>
+                  )}
+                  <p className={`font-semibold text-sm ${isToday ? 'text-mulligan-blue-dark' : 'text-mulligan-blue'}`}>
+                    {day}
+                  </p>
+                  <p className="text-mulligan-gray-dark text-sm mt-1">{special}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
