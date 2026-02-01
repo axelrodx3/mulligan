@@ -132,7 +132,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6 bg-white">
+      <section className="pt-32 pb-16 px-6 bg-gradient-to-b from-gray-50/80 via-white to-white">
         <div className="max-w-4xl mx-auto text-center">
           <img
             src="/logo.png"
@@ -184,6 +184,9 @@ export default function Home() {
               Order on DoorDash
             </a>
           </div>
+          <p className="text-mulligan-gray text-sm mt-8 animate-hero-enter" style={{ animationDelay: '0.7s' }}>
+            14 HD TVs • Pool • Darts • Cornhole • DJ weekends
+          </p>
         </div>
       </section>
 
