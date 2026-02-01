@@ -60,6 +60,8 @@ function isOpenNow(): { open: boolean; status: string } {
 
 const TAGLINE_PHRASES = ['Sports.', 'Great food.', 'Good vibes.']
 
+const ON_TAP = ['Modelo', 'Miller Lite', 'Juicy Jay', 'Allagash', 'Coors Banquet', '& More']
+
 const AMENITIES = [
   '14 Large HD Flat Screen TVs',
   'Massive 80" TV',
@@ -359,8 +361,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* What's on Tap */}
       <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-4xl md:text-5xl text-mulligan-blue mb-10 tracking-wider text-center">
+            What&apos;s on Tap
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {ON_TAP.map((beer) => (
+              <div
+                key={beer}
+                className="px-6 py-3 bg-white rounded-lg border border-gray-200 shadow-sm transition-all duration-200 hover:border-mulligan-blue hover:shadow-md hover:scale-105 font-medium text-mulligan-gray-dark hover:text-mulligan-blue"
+              >
+                {beer}
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-mulligan-gray text-sm mt-6">
+            More taps coming soon — stop in to see our full selection!
+          </p>
+        </div>
+      </section>
+
+      {/* Our Story */}
+      <section className="py-16 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-6 tracking-wide">
             Our Story
@@ -405,7 +429,7 @@ export default function Home() {
       </section>
 
       {/* Hours & Location */}
-      <section className="py-16 px-6 bg-gray-50">
+      <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="font-display text-3xl text-mulligan-blue mb-6 tracking-wide">
