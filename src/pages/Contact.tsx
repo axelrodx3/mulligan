@@ -1,9 +1,46 @@
 export default function Contact() {
   return (
-    <div className="pt-24 pb-20 px-6 text-tavern-white bg-tavern-dark">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-semibold mb-6">Contact</h1>
-        <p className="text-tavern-silver">[Address, phone, email, hours – add your details]</p>
+    <div className="pt-24 pb-20 px-6 bg-tavern-black text-tavern-white">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="font-display text-4xl md:text-5xl text-mulligan-gold mb-12 tracking-wide">
+          Contact
+        </h1>
+
+        <div className="space-y-8">
+          <div>
+            <h2 className="font-display text-xl text-tavern-white mb-2">Address</h2>
+            <a
+              href="https://www.google.com/maps/dir//410+Highway+21+Bypass,+Fort+Mill,+SC+29715"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-tavern-offwhite hover:text-mulligan-gold transition-colors"
+            >
+              410 Highway 21 Bypass
+              <br />
+              Fort Mill, SC 29715
+            </a>
+          </div>
+
+          <div>
+            <h2 className="font-display text-xl text-tavern-white mb-2">Phone</h2>
+            <a
+              href="tel:803-548-0044"
+              className="text-tavern-offwhite hover:text-mulligan-gold transition-colors"
+            >
+              (803) 548-0044
+            </a>
+          </div>
+
+          <div>
+            <h2 className="font-display text-xl text-tavern-white mb-2">Email</h2>
+            <a
+              href="mailto:MulligansFM@Gmail.com"
+              className="text-tavern-offwhite hover:text-mulligan-gold transition-colors"
+            >
+              MulligansFM@Gmail.com
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
