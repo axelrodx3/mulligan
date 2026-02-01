@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const VENUE_PHOTOS = [
+const GALLERY_PHOTOS = [
   { src: '/drinks1.png', alt: 'Bar with drinks and specials' },
   { src: '/drinks2.png', alt: 'Liquor display at Mulligans' },
+  { src: '/drinks3.png', alt: 'Bartender pouring at Mulligans' },
   { src: '/location1.png', alt: 'Mulligans sports bar interior' },
+  { src: '/food1.png', alt: 'Buffalo wings and fries' },
+  { src: '/food2.png', alt: 'Loaded potato skins' },
+  { src: '/food3.png', alt: 'Mozzarella sticks with marinara' },
+  { src: '/food4.png', alt: 'French dip sandwich' },
 ]
 
 const HOURS = [
@@ -72,8 +77,8 @@ export default function Home() {
     if (lightboxIndex === null) return
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setLightboxIndex(null)
-      if (e.key === 'ArrowLeft') setLightboxIndex((i) => (i === null ? null : (i - 1 + VENUE_PHOTOS.length) % VENUE_PHOTOS.length))
-      if (e.key === 'ArrowRight') setLightboxIndex((i) => (i === null ? null : (i + 1) % VENUE_PHOTOS.length))
+      if (e.key === 'ArrowLeft') setLightboxIndex((i) => (i === null ? null : (i - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length))
+      if (e.key === 'ArrowRight') setLightboxIndex((i) => (i === null ? null : (i + 1) % GALLERY_PHOTOS.length))
     }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKeyDown)
@@ -146,21 +151,47 @@ export default function Home() {
           <h2 className="font-display text-3xl md:text-4xl text-mulligan-blue mb-10 tracking-wide text-center">
             At Mulligans
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {VENUE_PHOTOS.map((photo, i) => (
-              <button
-                key={photo.src}
-                type="button"
-                onClick={() => setLightboxIndex(i)}
-                className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-56 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
-                />
-              </button>
-            ))}
+
+          {/* Venue & Bar */}
+          <div className="mb-8">
+            <h3 className="font-display text-xl text-mulligan-blue mb-4 tracking-wide text-center">Venue & Bar</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {GALLERY_PHOTOS.slice(0, 4).map((photo, i) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-44 md:h-52 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Food & Drinks */}
+          <div>
+            <h3 className="font-display text-xl text-mulligan-blue mb-4 tracking-wide text-center">Food & Drinks</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {GALLERY_PHOTOS.slice(4, 8).map((photo, i) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  onClick={() => setLightboxIndex(i + 4)}
+                  className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-mulligan-blue focus:ring-offset-2 rounded-xl overflow-hidden"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-44 md:h-52 object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.03]"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
 
           {lightboxIndex !== null && (
@@ -187,7 +218,7 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()
-                  setLightboxIndex((i) => (i === null ? 0 : (i - 1 + VENUE_PHOTOS.length) % VENUE_PHOTOS.length))
+                  setLightboxIndex((i) => (i === null ? 0 : (i - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length))
                 }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
                 aria-label="Previous"
@@ -195,8 +226,8 @@ export default function Home() {
                 ‹
               </button>
               <img
-                src={VENUE_PHOTOS[lightboxIndex].src}
-                alt={VENUE_PHOTOS[lightboxIndex].alt}
+                src={GALLERY_PHOTOS[lightboxIndex].src}
+                alt={GALLERY_PHOTOS[lightboxIndex].alt}
                 className="max-w-[90vw] max-h-[85vh] object-contain z-0"
                 onClick={(e) => e.stopPropagation()}
               />
@@ -205,7 +236,7 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()
-                  setLightboxIndex((i) => (i === null ? 0 : (i + 1) % VENUE_PHOTOS.length))
+                  setLightboxIndex((i) => (i === null ? 0 : (i + 1) % GALLERY_PHOTOS.length))
                 }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors text-3xl"
                 aria-label="Next"
@@ -213,7 +244,7 @@ export default function Home() {
                 ›
               </button>
               <span className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[100] text-white/80 text-sm">
-                {lightboxIndex + 1} / {VENUE_PHOTOS.length}
+                {lightboxIndex + 1} / {GALLERY_PHOTOS.length}
               </span>
             </div>
           )}
