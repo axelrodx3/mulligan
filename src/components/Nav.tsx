@@ -12,7 +12,7 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="w-full flex items-center justify-between px-6 md:px-8 py-4">
         <Link to="/" className="flex items-center gap-2 shrink-0 transition-transform duration-200 hover:scale-105">
           <img
